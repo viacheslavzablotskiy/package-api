@@ -1,0 +1,46 @@
+{
+  "name": "@viacheslavzablotskiy/package-monorepo-api",
+  "version": "1.0.0",
+  "license": "MIT",
+    "scripts": {
+  "build:cjs": "tsc --project tsconfig.cjs.json",
+  "build:esm": "tsc --project tsconfig.esm.json",
+  "build": "npm run build:cjs && npm run build:esm"
+},
+  "main": "./dist/cjs/entry.js",
+  "module": "./dist/esm/entry.js",
+  "types": "./dist/esm/entry.d.ts",
+  "files": [
+    "./dist/**"
+  ],
+  "publishConfig": {
+    "@viacheslavzablotskiy:registry": "https://npm.pkg.github.com"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/entry.js",
+      "require": "./dist/cjs/entry.js"
+    }
+  },
+  "dependencies": {
+    "@nestjs/mapped-types": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.10.7",
+    "ts-loader": "^9.4.3",
+    "ts-node": "^10.9.2",
+    "typescript": "5.5.4"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "zod": "^4.1.12",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/jwt": "^11.0.1",
+    "passport-jwt": "^4.0.1",
+    "@nestjs/passport": "^11.0.5",
+    "rxjs": "^7.8.2"
+  }
+}
